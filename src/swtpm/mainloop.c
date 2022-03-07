@@ -242,6 +242,10 @@ int mainLoop(struct mainLoopParams *mlp,
             if (rc == 0) {
                 rc = SWTPM_IO_Read(&connection_fd, command, &command_length,
                                    max_command_length);
+                
+                /*command buffer print*/
+                printf("TPM Command request (TEST) - %s\n", command);
+
                 if (rc != 0) {
                     /* connection broke */
                     SWTPM_IO_Disconnect(&connection_fd);
